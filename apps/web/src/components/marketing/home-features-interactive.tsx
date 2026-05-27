@@ -46,7 +46,7 @@ export function HomeFeaturesInteractive() {
               </OceanPanel>
 
               <ul className="grid gap-3">
-                {t.items.map((item, i) => (
+                {t.items.map((item) => (
                   <li key={item.title}>
                     <OceanPanel
                       className={cn(

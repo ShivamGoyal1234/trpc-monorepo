@@ -37,7 +37,7 @@ export function OceanDropletBurst({
         driftY: Math.sin(angle) * dist * 0.6 - 30,
       };
     });
-  }, [burstKey]);
+  }, [burstKey]); // eslint-disable-line react-hooks/exhaustive-deps -- recompute droplets on each burst
 
   if (!active) return null;
 

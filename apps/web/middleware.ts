@@ -2,8 +2,6 @@ import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const PUBLIC_DASHBOARD_PATHS = ["/login", "/register", "/forgot-password"];
-
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
