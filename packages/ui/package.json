@@ -1,0 +1,29 @@
+{
+  "name": "@repo/ui",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./utils": "./src/lib/utils.ts",
+    "./button": "./src/button.tsx",
+    "./input": "./src/input.tsx",
+    "./card": "./src/card.tsx",
+    "./label": "./src/label.tsx",
+    "./badge": "./src/badge.tsx",
+    "./sonner": "./src/sonner.tsx"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.562.0",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/react": "19.2.2",
+    "react": "^19.2.0",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

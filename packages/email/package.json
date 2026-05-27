@@ -1,0 +1,16 @@
+{
+  "name": "@repo/email",
+  "version": "1.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.13"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/nodemailer": "^8.0.0",
+    "typescript": "^5.9.2"
+  }
+}

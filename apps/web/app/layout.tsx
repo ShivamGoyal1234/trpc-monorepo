@@ -1,20 +1,26 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import { GlobalProviders } from "~/providers/global";
+import { Geist, Geist_Mono } from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+import "./globals.css";
+import { Providers } from "~/src/providers";
+
+const geistSans = Geist({
+  subsets: ["latin"],
   variable: "--font-geist-sans",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
   variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
-  title: "Streamyst",
-  description: "Media Forwarding",
+  title: {
+    default: "FormCraft — Build beautiful forms",
+    template: "%s | FormCraft",
+  },
+  description:
+    "Create, share, and analyze forms with AI-powered generation and a modern builder.",
 };
 
 export default function RootLayout({
@@ -23,9 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <GlobalProviders>{children}</GlobalProviders>
+    <html
+      lang="en"
+      className={`dark scroll-smooth ${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-screen font-sans antialiased">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

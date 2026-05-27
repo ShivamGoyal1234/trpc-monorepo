@@ -6,7 +6,9 @@ export const env = createEnv({
    * Specify your server-side environment variables schema here. This way you can ensure the app
    * isn't built with invalid env vars.
    */
-  server: {},
+  server: {
+    NEXTAUTH_SECRET: z.string().optional(),
+  },
 
   /**
    * Specify your client-side environment variables schema here. This way you can ensure the app
@@ -23,6 +25,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
