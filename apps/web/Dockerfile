@@ -15,9 +15,9 @@ COPY packages/eslint-config/package.json ./packages/eslint-config/
 RUN pnpm install --frozen-lockfile
 
 FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/apps/web/node_modules ./apps/web/node_modules
-COPY --from=deps /app/apps/api/node_modules ./apps/api/node_modules
+# Copy full install tree (root + workspace node_modules) so Turbopack can resolve
+# dependencies like zod from packages/schemas when bundling workspace source.
+COPY --from=deps /app/ ./
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
