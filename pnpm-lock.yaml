@@ -449,6 +449,9 @@ importers:
       '@types/bcryptjs':
         specifier: ^2.4.6
         version: 2.4.6
+      '@types/node':
+        specifier: ^22.15.3
+        version: 22.15.3
       dotenv-cli:
         specifier: ^11.0.0
         version: 11.0.0
