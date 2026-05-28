@@ -39,6 +39,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3001
+      REDIS_URL: redis://redis:6379
     ports:
       - "${API_PORT:-3201}:3001"
     depends_on:

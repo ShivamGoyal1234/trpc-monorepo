@@ -4,7 +4,8 @@ const redisUrl = process.env.REDIS_URL ?? "redis://localhost:6379";
 
 export const redis = new Redis(redisUrl, {
   lazyConnect: true,
-  maxRetriesPerRequest: 3,
+  // Do not throw hard errors while Redis is reconnecting in containers.
+  maxRetriesPerRequest: null,
   retryStrategy(times) {
     return Math.min(times * 200, 2000);
   },

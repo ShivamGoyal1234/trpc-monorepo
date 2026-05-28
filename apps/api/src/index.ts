@@ -100,6 +100,8 @@ async function main() {
 
   const app = express();
   const server = http.createServer(app);
+  // Running behind nginx on VPS; trust X-Forwarded-* headers.
+  app.set("trust proxy", 1);
 
   app.use(
     pinoHttp({
