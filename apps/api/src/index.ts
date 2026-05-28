@@ -205,7 +205,7 @@ async function main() {
 
   const flushJob = startFlushViewsJob();
 
-  server.listen(PORT, () => {
+  server.listen(PORT, "0.0.0.0", () => {
     logger.info(`FormCraft API listening on port ${PORT}`);
   });
 
