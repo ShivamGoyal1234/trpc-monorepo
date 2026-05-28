@@ -29,7 +29,9 @@ services:
       retries: 5
 
   api:
-    image: ${DOCKER_IMAGE_API:?DOCKER_IMAGE_API is required}
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
     restart: unless-stopped
     container_name: formcraft-api
     env_file:
@@ -46,7 +48,12 @@ services:
         condition: service_healthy
 
   web:
-    image: ${DOCKER_IMAGE_WEB:?DOCKER_IMAGE_WEB is required}
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
     restart: unless-stopped
     container_name: formcraft-web
     env_file:
@@ -54,10 +61,12 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3000
+      HOSTNAME: 0.0.0.0
     ports:
       - "${WEB_PORT:-3200}:3000"
     depends_on:
-      - api
+      api:
+        condition: service_started
 
 volumes:
   pg_data:

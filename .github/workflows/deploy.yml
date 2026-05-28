@@ -34,9 +34,5 @@ jobs:
             git fetch origin main
             git checkout main
             git pull origin main
-            export GITHUB_REPOSITORY="${{ github.repository }}"
-            export GHCR_USER="${{ github.actor }}"
-            export GHCR_TOKEN="${{ secrets.GHCR_PAT }}"
-            export IMAGE_TAG="latest"
             chmod +x scripts/deploy.sh
             ./scripts/deploy.sh
